@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FAF9F6]">
+    <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden">
       {/* Header */}
       <header className="w-full px-4 md:px-8 py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
