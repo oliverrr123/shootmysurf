@@ -5,8 +5,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden">
       {/* Header */}
-      <header className="w-full px-4 md:px-8 py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm sticky top-0 z-50">
+        <div className="w-full flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
           <div className="relative">
             <img
@@ -43,8 +43,8 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="px-4 md:px-8 py-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-4">
+        <div className="w-full px-4 md:px-8">
           <div className="min-h-96 md:h-96 lg:h-[30rem] rounded-xl overflow-hidden relative py-24 md:py-0">
             {/* Background Image */}
             <img
@@ -108,8 +108,8 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">Latest Albums</h2>
         </div>
 
-        <div className="px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="w-full px-4 md:px-8">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[1, 2, 3, 4].map((item) => (
               <div key={item} className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE]">
                 <div className="h-52 p-2.5 rounded-xl mb-3 relative overflow-hidden">
@@ -160,8 +160,8 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">How it works</h2>
         </div>
 
-        <div className="px-4 md:px-8 py-4">
-          <div className="max-w-7xl mx-auto space-y-16">
+        <div className="w-full px-4 md:px-8 py-4">
+          <div className="w-full space-y-16">
             {/* Step 1 */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
               <div className="flex-1 lg:pl-8 relative order-2 lg:order-1">
@@ -264,8 +264,8 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">What people say</h2>
         </div>
 
-        <div className="px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="w-full px-4 md:px-8">
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { name: "Lucas", quote: "As a photographer, ShootMySurf has been a game-changer for my business." },
               { name: "Chloe", quote: "I love the quality of the photos and the convenience of the platform." },
@@ -288,8 +288,8 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">Benefits</h2>
         </div>
 
-        <div className="px-4 md:px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="w-full px-4 md:px-8">
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
               <Users className="w-6 h-6 text-[#163F69] flex-shrink-0" />
               <span className="text-base font-bold text-[#163F69] font-neulis">For Surfers</span>
@@ -310,8 +310,8 @@ export default function HomePage() {
       <img src="/images/splitter-footer.svg" alt="Splitter" className="w-screen max-w-none bg-[#D0E6E7] block" style={{ width: '110vw', transform: 'translateX(-5%)' }} />
       <footer className="bg-[#163F69] text-white">
         {/* <div className="h-14 bg-[#D0E6E7]"></div> */}
-        <div className="px-4 md:px-8 py-10">
-          <div className="max-w-7xl mx-auto">
+        <div className="w-full px-4 md:px-8 py-10">
+          <div className="w-full">
             <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-11">
               {/* Logo */}
               <div className="relative w-40">
