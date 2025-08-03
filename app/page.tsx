@@ -263,47 +263,51 @@ export default function HomePage() {
 
       {/* Testimonials Section */}
       <section className="py-14">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">What people say</h2>
-        </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">What people say</h2>
+          </div>
 
-        <div className="w-full px-4 md:px-8">
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              { name: "Lucas", quote: "As a photographer, ShootMySurf has been a game-changer for my business." },
-              { name: "Chloe", quote: "I love the quality of the photos and the convenience of the platform." },
-              { name: "Noah", quote: "ShootMySurf made it so easy to find and buy photos from my surf trip!" },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE]">
-                <div className="space-y-4">
-                  <h4 className="text-xl font-bold text-[#163F69] font-neulis">{testimonial.name}</h4>
-                  <p className="text-sm text-[#6B7582] leading-5">"{testimonial.quote}"</p>
+          <div className="w-full px-4 md:px-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
+              {[
+                { name: "Lucas", quote: "As a photographer, ShootMySurf has been a game-changer for my business." },
+                { name: "Chloe", quote: "I love the quality of the photos and the convenience of the platform." },
+                { name: "Noah", quote: "ShootMySurf made it so easy to find and buy photos from my surf trip!" },
+              ].map((testimonial, index) => (
+                <div key={index} className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE]">
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-bold text-[#163F69] font-neulis">{testimonial.name}</h4>
+                    <p className="text-sm text-[#6B7582] leading-5">"{testimonial.quote}"</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
       <section className="py-10 pb-20 bg-[#D0E6E7]">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">Benefits</h2>
-        </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">Benefits</h2>
+          </div>
 
-        <div className="w-full px-4 md:px-8">
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
-              <Users className="w-6 h-6 text-[#163F69] flex-shrink-0" />
-              <span className="text-base font-bold text-[#163F69] font-neulis">For Surfers</span>
-            </div>
-            <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
-              <DollarSign className="w-6 h-6 text-[#163F69] flex-shrink-0" />
-              <span className="text-base font-bold text-[#163F69] font-neulis">For Photographers</span>
-            </div>
-            <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
-              <Shield className="w-6 h-6 text-[#163F69] flex-shrink-0" />
-              <span className="text-base font-bold text-[#163F69] font-neulis">Secure Platform</span>
+          <div className="w-full px-4 md:px-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
+                <Users className="w-6 h-6 text-[#163F69] flex-shrink-0" />
+                <span className="text-base font-bold text-[#163F69] font-neulis">For Surfers</span>
+              </div>
+              <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
+                <DollarSign className="w-6 h-6 text-[#163F69] flex-shrink-0" />
+                <span className="text-base font-bold text-[#163F69] font-neulis">For Photographers</span>
+              </div>
+              <div className="bg-white p-3.5 rounded-xl border-2 border-[#EEEEEE] flex items-center gap-3">
+                <Shield className="w-6 h-6 text-[#163F69] flex-shrink-0" />
+                <span className="text-base font-bold text-[#163F69] font-neulis">Secure Platform</span>
+              </div>
             </div>
           </div>
         </div>
@@ -313,52 +317,54 @@ export default function HomePage() {
       <img src="/images/splitter-footer.svg" alt="Splitter" className="w-screen max-w-none bg-[#D0E6E7] block" style={{ width: '110vw', transform: 'translateX(-5%)' }} />
       <footer className="bg-[#163F69] text-white">
         {/* <div className="h-14 bg-[#D0E6E7]"></div> */}
-        <div className="w-full px-4 md:px-8 py-10">
-          <div className="w-full">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-11">
-              {/* Logo */}
-              <div className="relative w-40">
-                <img
-                  src="/images/logo-white.svg"
-                  alt="ShootMySurf"
-                  className="h-12 md:h-16 w-auto"
-                />
-              </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="w-full px-4 md:px-8 py-10">
+            <div className="w-full">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-11">
+                {/* Logo */}
+                <div className="relative w-40">
+                  <img
+                    src="/images/logo-white.svg"
+                    alt="ShootMySurf"
+                    className="h-12 md:h-16 w-auto"
+                  />
+                </div>
 
-              {/* Navigation Links */}
-              <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                <a href="#" className="hover:opacity-80">
-                  About
-                </a>
-                <a href="#" className="hover:opacity-80">
-                  Contact
-                </a>
-                <a href="#" className="hover:opacity-80">
-                  FAQ
-                </a>
-                <a href="#" className="hover:opacity-80">
-                  Privacy
-                </a>
-                <a href="#" className="hover:opacity-80">
-                  Terms
-                </a>
-              </div>
+                {/* Navigation Links */}
+                <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+                  <a href="#" className="hover:opacity-80">
+                    About
+                  </a>
+                  <a href="#" className="hover:opacity-80">
+                    Contact
+                  </a>
+                  <a href="#" className="hover:opacity-80">
+                    FAQ
+                  </a>
+                  <a href="#" className="hover:opacity-80">
+                    Privacy
+                  </a>
+                  <a href="#" className="hover:opacity-80">
+                    Terms
+                  </a>
+                </div>
 
-              {/* Social Links */}
-              <div className="flex flex-col items-center gap-1 w-40">
-                <span className="text-sm md:text-base">Follow us:</span>
-                <div className="flex gap-4">
-                  <Instagram className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
-                  <Facebook className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
-                  <Twitter className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
+                {/* Social Links */}
+                <div className="flex flex-col items-center gap-1 w-40">
+                  <span className="text-sm md:text-base">Follow us:</span>
+                  <div className="flex gap-4">
+                    <Instagram className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
+                    <Facebook className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
+                    <Twitter className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Copyright */}
-            <div className="text-center text-sm md:text-base flex justify-center items-center gap-2">
-              <span>© 2025 ShootMySurf. Created by </span>
-              <img src="/images/digitivo-logo.svg" alt="Digitivo" className="w-24 h-24" />
+              {/* Copyright */}
+              <div className="text-center text-sm md:text-base flex justify-center items-center gap-2">
+                <span>© 2025 ShootMySurf. Created by </span>
+                <img src="/images/digitivo-logo.svg" alt="Digitivo" className="w-24 h-24" />
+              </div>
             </div>
           </div>
         </div>
