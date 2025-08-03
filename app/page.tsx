@@ -190,7 +190,7 @@ export default function HomePage() {
                 <img
                   src="/images/section1.jpg"
                   alt="Registration process"
-                  className="w-full h-48 md:h-72 lg:h-80 rounded-xl object-cover mx-auto"
+                  className="w-full h-48 md:h-72 lg:h-96 xl:h-[28rem] rounded-xl object-cover mx-auto"
                 />
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
                 <img
                   src="/images/section2.jpg"
                   alt="Upload photos process"
-                  className="w-full h-48 md:h-72 lg:h-80 rounded-xl object-cover mx-auto"
+                  className="w-full h-48 md:h-72 lg:h-96 xl:h-[28rem] rounded-xl object-cover mx-auto"
                 />
               </div>
               <div className="flex-1 lg:pr-8 relative order-2">
@@ -253,7 +253,7 @@ export default function HomePage() {
                 <img
                   src="/images/section3.jpg"
                   alt="Purchase process"
-                  className="w-full h-48 md:h-72 lg:h-80 rounded-xl object-cover mx-auto"
+                  className="w-full h-48 md:h-72 lg:h-96 xl:h-[28rem] rounded-xl object-cover mx-auto"
                 />
               </div>
             </div>
