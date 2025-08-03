@@ -46,51 +46,56 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="px-4 md:px-8 py-4">
         <div className="max-w-7xl mx-auto">
-          <div className="min-h-80 md:h-96 lg:h-[30rem] rounded-xl overflow-hidden relative">
+          <div className="min-h-96 md:h-96 lg:h-[30rem] rounded-xl overflow-hidden relative py-24 md:py-0">
             {/* Background Image */}
             <img
               src="/images/hero.jpg"
               alt="Surfer riding a wave at sunset"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-[70%] md:object-[0%]"
             />
             
-            <div className="w-full md:w-3/5 lg:w-1/2 h-full bg-[#D0E6E7] relative flex flex-col justify-center px-6 md:px-12 lg:px-16 gap-6 md:gap-9">
-              {/* Decorative element */}
-              <div className="absolute left-0 top-8 md:top-14 w-32 md:w-60 lg:w-64 h-20 md:h-32 lg:h-40 bg-[#FAF9F6] rounded-r-3xl md:rounded-r-[3rem] lg:rounded-r-[6rem]"></div>
+            {/* Mobile overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/20 md:bg-transparent"></div>
+            
+            <div className="w-full md:w-3/5 lg:w-1/2 h-full bg-transparent md:bg-[#D0E6E7] relative flex flex-col justify-center px-4 md:px-6 lg:px-16 gap-4 md:gap-6 lg:gap-9">
+              {/* Decorative element - hidden on mobile for cleaner look */}
+              <div className="absolute left-0 top-8 md:top-14 w-32 md:w-60 lg:w-64 h-20 md:h-32 lg:h-40 bg-[#FAF9F6] rounded-r-3xl md:rounded-r-[3rem] lg:rounded-r-[6rem] hidden md:block"></div>
 
-              <div className="relative z-10">
-                <div className="space-y-4 md:space-y-2 mb-6 md:mb-9">
-                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#163F69] leading-tight md:leading-tight lg:leading-tight font-neulis">
+              <div className="relative z-10 text-center md:text-left">
+                <div className="space-y-3 md:space-y-4 lg:space-y-2 mb-6 md:mb-9">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white md:text-[#163F69] leading-tight font-neulis px-4 md:px-0">
                     Find and buy your best surf moments
                   </h1>
-                  <p className="text-sm md:text-lg lg:text-xl font-semibold text-[#163F69] leading-relaxed md:leading-6">
+                  <p className="text-base md:text-lg lg:text-xl font-semibold text-white md:text-[#163F69] leading-relaxed px-2 md:px-0">
                     ShootMySurf connects surf photographers with surfers, allowing photographers to upload surf photos
                     and surfers to easily find and purchase their photos.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-start">
-                  <div className="flex flex-col gap-1 items-center sm:items-start">
-                    <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-5 py-2.5 rounded-full font-semibold">
+                <div className="flex flex-col sm:flex-row gap-6 md:gap-4 justify-center md:justify-start items-center px-4 md:px-0">
+                  <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
+                    <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
                       I am surfer
                     </Button>
-                    <p className="text-xs text-black text-center sm:text-left max-w-32">Find your wave and buy it.</p>
+                    <p className="text-xs text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
-                  <div className="flex flex-col gap-1 items-center sm:items-start">
+                  <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
                     <Button
                       variant="secondary"
-                      className="bg-[#EEEEEE] hover:bg-[#EEEEEE]/90 text-[#163F69] px-5 py-2.5 rounded-full font-semibold"
+                      className="bg-white md:bg-[#EEEEEE] hover:bg-white/90 md:hover:bg-[#EEEEEE]/90 text-[#163F69] px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto"
                     >
                       I am photographer
                     </Button>
-                    <p className="text-xs text-black text-center sm:text-left max-w-36">Upload your photos, set price, sell it</p>
+                    <p className="text-xs text-white md:text-black text-center sm:text-left md:max-w-36">Upload your photos, set price, sell it</p>
                   </div>
                 </div>
               </div>
+              
+              {/* Wave splitter - only visible on larger screens */}
               <img
                 src="/images/splitter.svg"
                 alt="Wave splitter"
-                className="absolute right-0 top-0 h-full w-auto object-cover z-10"
+                className="absolute right-0 top-0 h-full w-auto object-cover z-10 hidden md:block"
                 style={{ transform: 'translateX(99%)' }}
               />
             </div>
@@ -161,10 +166,10 @@ export default function HomePage() {
             {/* Step 1 */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
               <div className="flex-1 lg:pl-8 relative order-2 lg:order-1">
-                <div className="absolute left-0 top-0 w-32 md:w-60 lg:w-64 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-r-3xl md:rounded-r-[3rem] lg:rounded-r-[6rem] hidden lg:block"></div>
-                <div className="relative z-10 space-y-6 text-center lg:text-left">
-                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis">1. Register</h3>
-                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:mx-0">
+                <div className="absolute left-0 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-r-full md:rounded-r-[3rem] lg:rounded-r-[6rem] hidden lg:block" style={{ left: 'calc(-100vw + 100%)', width: 'calc(100vw - 100% + 16rem)', top: '22%', transform: 'translateY(-50%)' }}></div>
+                <div className="relative z-10 space-y-6">
+                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis lg:pr-4">1. Register</h3>
+                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:mx-0 lg:pr-4">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean vel massa quis mauris vehicula
                     lacinia.
                     <br />
@@ -198,13 +203,16 @@ export default function HomePage() {
                 />
               </div>
               <div className="flex-1 lg:pr-8 relative order-2">
-                <div className="absolute right-0 top-0 w-32 md:w-60 lg:w-64 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-l-3xl md:rounded-l-[3rem] lg:rounded-l-[6rem] hidden lg:block"></div>
-                <div className="relative z-10 space-y-6 text-center lg:text-right">
-                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis">2. Find or upload your photos</h3>
-                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:ml-auto lg:mr-0">
+                <div className="absolute right-0 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-l-full md:rounded-l-[3rem] lg:rounded-l-[6rem] hidden lg:block" style={{ right: 'calc(-100vw + 100%)', width: 'calc(100vw - 100% + 16rem)', top: '22%', transform: 'translateY(-50%)' }}></div>
+                <div className="relative z-10 space-y-6">
+                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis text-left lg:text-right lg:pl-4">2. Find or upload your photos</h3>
+                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:ml-auto lg:mr-0 text-left lg:text-right lg:pl-4">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean vel massa quis mauris vehicula
-                    lacinia. Quisque tincidunt scelerisque libero. Aliquam erat volutpat. Quisque porta. Integer
-                    imperdiet lectus quis justo. Vivamus ac leo pretium faucibus.
+                    lacinia.
+                    <br />
+                    <br />
+                    Quisque tincidunt scelerisque libero. Aliquam erat volutpat. Quisque porta. Integer imperdiet lectus
+                    quis justo. Vivamus ac leo pretium faucibus.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
                     <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-5 py-2.5 rounded-full font-semibold">
@@ -221,10 +229,10 @@ export default function HomePage() {
             {/* Step 3 */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
               <div className="flex-1 lg:pl-8 relative order-2 lg:order-1">
-                <div className="absolute left-0 top-0 w-32 md:w-60 lg:w-64 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-r-3xl md:rounded-r-[3rem] lg:rounded-r-[6rem] hidden lg:block"></div>
-                <div className="relative z-10 space-y-6 text-center lg:text-left">
-                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis">3. Purchase or sell your photos</h3>
-                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:mx-0">
+                <div className="absolute left-0 h-20 md:h-32 lg:h-40 bg-[#D0E6E7] rounded-r-full md:rounded-r-[3rem] lg:rounded-r-[6rem] hidden lg:block" style={{ left: 'calc(-100vw + 100%)', width: 'calc(100vw - 100% + 16rem)', top: '22%', transform: 'translateY(-50%)' }}></div>
+                <div className="relative z-10 space-y-6">
+                  <h3 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-5 font-neulis lg:pr-4">3. Purchase or sell your photos</h3>
+                  <p className="text-sm md:text-base text-black leading-5 max-w-full lg:max-w-lg mx-auto lg:mx-0 lg:pr-4">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean vel massa quis mauris vehicula
                     lacinia. Quisque tincidunt scelerisque libero.
                     <br />
