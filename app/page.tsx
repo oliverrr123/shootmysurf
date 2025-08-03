@@ -1,6 +1,5 @@
-import { Camera, MapPin, Calendar, User, Instagram, Facebook, Twitter, Users, DollarSign, Shield, Waves } from "lucide-react"
+import { MapPin, Calendar, User, Instagram, Facebook, Twitter, Users, DollarSign, Shield, Waves } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { IMAGES_MANIFEST } from "next/dist/shared/lib/constants"
 
 export default function HomePage() {
   return (
