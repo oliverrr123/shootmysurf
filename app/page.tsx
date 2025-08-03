@@ -5,7 +5,10 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden">
       {/* Header */}
-      <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm sticky top-0 z-50">
+      <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm fixed top-0 left-0 right-0 z-50" style={{ 
+        WebkitBackdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(8px)'
+      } as React.CSSProperties}>
         <div className="w-full flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
           <div className="relative">
@@ -43,7 +46,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-4">
+      <section className="py-4 pt-20">
         <div className="w-full px-4 md:px-8">
           <div className="min-h-96 md:h-96 lg:h-[30rem] rounded-xl overflow-hidden relative py-24 md:py-0">
             {/* Background Image */}
