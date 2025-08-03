@@ -308,7 +308,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <img src="/images/splitter-footer.svg" alt="Splitter" className="w-full bg-[#D0E6E7]" />
+      <img src="/images/splitter-footer.svg" alt="Splitter" className="w-screen max-w-none bg-[#D0E6E7] block" style={{ width: '110vw', transform: 'translateX(-5%)' }} />
       <footer className="bg-[#163F69] text-white">
         {/* <div className="h-14 bg-[#D0E6E7]"></div> */}
         <div className="px-4 md:px-8 py-10">
@@ -355,7 +355,7 @@ export default function HomePage() {
 
             {/* Copyright */}
             <div className="text-center text-sm md:text-base flex justify-center items-center gap-2">
-              <span>© 2025 ShootMySurf. Designed by </span>
+              <span>© 2025 ShootMySurf. Created by </span>
               <img src="/images/digitivo-logo.svg" alt="Digitivo" className="w-24 h-24" />
             </div>
           </div>
