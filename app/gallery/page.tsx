@@ -282,7 +282,7 @@ export default function GalleryPage() {
                     </label> */}
                     <div className="relative">
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#163F69]" />
                         <Input
                           type="text"
                           placeholder="Search photographers..."
@@ -321,7 +321,7 @@ export default function GalleryPage() {
                     </label> */}
                     <div className="relative">
                       <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                                  <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#163F69]" />
                         <Input
                           type="text"
                           placeholder="Search locations..."
@@ -367,7 +367,7 @@ export default function GalleryPage() {
                             !dateRange && "text-muted-foreground"
                           )}
                         >
-                          <CalendarDays className="mr-2 h-4 w-4" />
+                                                      <CalendarDays className="mr-2 h-4 w-4 text-[#163F69]" />
                           {dateRange?.from ? (
                             dateRange.to ? (
                               <>
@@ -412,7 +412,7 @@ export default function GalleryPage() {
                             (timeRange[0] === 0 && timeRange[1] === 24) && "text-muted-foreground"
                           )}
                         >
-                          <Clock className="mr-2 h-4 w-4" />
+                                                      <Clock className="mr-2 h-4 w-4 text-[#163F69]" />
                           {timeRange[0] === 0 && timeRange[1] === 24 ? (
                             <span>Any time</span>
                           ) : (
@@ -463,7 +463,7 @@ export default function GalleryPage() {
                   <div className="flex items-center gap-3">
                     <Select value={sortBy} onValueChange={setSortBy}>
                       <SelectTrigger className="w-48 h-12 rounded-xl pl-12 relative">
-                        <ArrowUpDown className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                        <ArrowUpDown className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#163F69]" />
                         <SelectValue placeholder="Sort by..." />
                       </SelectTrigger>
                     <SelectContent>
