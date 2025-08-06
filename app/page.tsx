@@ -1,49 +1,9 @@
-import { MapPin, Calendar, User, Instagram, Facebook, Twitter, Users, DollarSign, Shield, Waves } from "lucide-react"
+import { MapPin, Calendar, User, Users, DollarSign, Shield, Waves } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden">
-      {/* Header */}
-      <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm fixed top-0 left-0 right-0 z-50" style={{ 
-        WebkitBackdropFilter: 'blur(8px)',
-        backdropFilter: 'blur(8px)'
-      } as React.CSSProperties}>
-        <div className="w-full flex items-center justify-between px-4 md:px-8">
-          {/* Logo */}
-          <div className="relative">
-            <img
-              src="/images/logo-blue.svg"
-              alt="ShootMySurf"
-              className="h-10 md:h-12 w-auto"
-            />
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center gap-4 md:gap-8">
-            <nav className="hidden md:flex items-center gap-6 lg:gap-9">
-              <a href="#how-it-works" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
-                How it works
-              </a>
-              <a href="/contact" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
-                Contact us
-              </a>
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold">
-                Create account
-              </Button>
-              <Button
-                variant="secondary"
-                className="bg-[#EEEEEE] hover:bg-[#EEEEEE]/90 text-[#163F69] px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
-              >
-                Login
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+    <>
 
       {/* Hero Section */}
       <section className="py-4 pt-20">
@@ -288,7 +248,7 @@ export default function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-10 pb-20 bg-[#D0E6E7]">
+      <section className="py-10 pb-36 bg-[#D0E6E7]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6">
             <h2 className="text-2xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">Benefits</h2>
@@ -313,62 +273,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <img src="/images/splitter-footer.svg" alt="Splitter" className="w-screen max-w-none bg-[#D0E6E7] block" style={{ width: '110vw', transform: 'translateX(-5%)' }} />
-      <footer className="bg-[#163F69] text-white">
-        {/* <div className="h-14 bg-[#D0E6E7]"></div> */}
-        <div className="max-w-7xl mx-auto">
-          <div className="w-full px-4 md:px-8 py-10">
-            <div className="w-full">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-11">
-                {/* Logo */}
-                <div className="relative w-40">
-                  <img
-                    src="/images/logo-white.svg"
-                    alt="ShootMySurf"
-                    className="h-12 md:h-16 w-auto"
-                  />
-                </div>
-
-                {/* Navigation Links */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                  <a href="#" className="hover:opacity-80">
-                    About
-                  </a>
-                  <a href="#" className="hover:opacity-80">
-                    Contact
-                  </a>
-                  <a href="#" className="hover:opacity-80">
-                    FAQ
-                  </a>
-                  <a href="#" className="hover:opacity-80">
-                    Privacy
-                  </a>
-                  <a href="#" className="hover:opacity-80">
-                    Terms
-                  </a>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex flex-col items-center gap-1 w-40">
-                  <span className="text-sm md:text-base">Follow us:</span>
-                  <div className="flex gap-4">
-                    <Instagram className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
-                    <Facebook className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
-                    <Twitter className="w-5 h-5 md:w-6 md:h-6 hover:opacity-80 cursor-pointer" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Copyright */}
-              <div className="text-center text-sm md:text-base flex justify-center items-center gap-2">
-                <span>© 2025 ShootMySurf. Created by </span>
-                <img src="/images/digitivo-logo.svg" alt="Digitivo" className="w-24 h-24" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   )
 }

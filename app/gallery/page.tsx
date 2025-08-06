@@ -214,52 +214,9 @@ export default function GalleryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6]">
-      {/* Header */}
-      <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm fixed top-0 left-0 right-0 z-50" style={{ 
-        WebkitBackdropFilter: 'blur(8px)',
-        backdropFilter: 'blur(8px)'
-      } as React.CSSProperties}>
-        <div className="w-full flex items-center justify-between px-4 md:px-8">
-          {/* Logo */}
-          <div className="relative">
-            <a href="/">
-              <img
-                src="/images/logo-blue.svg"
-                alt="ShootMySurf"
-                className="h-10 md:h-12 w-auto"
-              />
-            </a>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center gap-4 md:gap-8">
-            <nav className="hidden md:flex items-center gap-6 lg:gap-9">
-              <a href="/#how-it-works" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
-                How it works
-              </a>
-              <a href="/#contact" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
-                Contact us
-              </a>
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold">
-                Create account
-              </Button>
-              <Button
-                variant="secondary"
-                className="bg-[#EEEEEE] hover:bg-[#EEEEEE]/90 text-[#163F69] px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
-              >
-                Login
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <>
       {/* Main Content */}
-      <main className="pt-20 pb-10">
+      <div className="pt-20 pb-20">
         {/* Page Header */}
         <div className="w-full px-4 md:px-8 py-8">
           <div className="flex flex-col gap-6 mb-4">
@@ -839,7 +796,7 @@ export default function GalleryPage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   )
 } 
