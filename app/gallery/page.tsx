@@ -273,8 +273,8 @@ export default function GalleryPage() {
             </div>
 
             {/* Filter Section */}
-            <div className="flex flex-wrap justify-between items-start gap-4">
-                <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-between sm:items-start gap-4">
+                                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                   {/* Photographer Filter */}
                   <div>
                     {/* <label className="block text-sm font-semibold text-[#163F69] mb-2">
@@ -293,7 +293,7 @@ export default function GalleryPage() {
                           }}
                           onFocus={() => setShowPhotographerSuggestions(true)}
                           onBlur={() => setTimeout(() => setShowPhotographerSuggestions(false), 200)}
-                          className="pl-10 border-2 border-[#EEEEEE] rounded-xl w-64 h-12"
+                          className="pl-10 border-2 border-[#EEEEEE] rounded-xl w-full sm:w-64 h-12"
                         />
                       </div>
                       
@@ -332,7 +332,7 @@ export default function GalleryPage() {
                           }}
                           onFocus={() => setShowLocationSuggestions(true)}
                           onBlur={() => setTimeout(() => setShowLocationSuggestions(false), 200)}
-                          className="pl-10 border-2 border-[#EEEEEE] rounded-xl w-64 h-12 rounded-xl"
+                          className="pl-10 border-2 border-[#EEEEEE] rounded-xl w-full sm:w-64 h-12"
                         />
                       </div>
                       
@@ -363,7 +363,7 @@ export default function GalleryPage() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12 rounded-xl",
+                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12",
                             !dateRange && "text-muted-foreground"
                           )}
                         >
@@ -408,7 +408,7 @@ export default function GalleryPage() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12",
+                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12",
                             (timeRange[0] === 0 && timeRange[1] === 24) && "text-muted-foreground"
                           )}
                         >
@@ -462,7 +462,7 @@ export default function GalleryPage() {
                                   {/* Sorting Controls */}
                   <div className="flex items-center gap-3">
                     <Select value={sortBy} onValueChange={setSortBy}>
-                      <SelectTrigger className="w-48 h-12 rounded-xl pl-12 relative">
+                      <SelectTrigger className="w-full sm:w-48 h-12 rounded-xl pl-12 relative">
                         <ArrowUpDown className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#163F69]" />
                         <SelectValue placeholder="Sort by..." />
                       </SelectTrigger>
@@ -738,7 +738,7 @@ export default function GalleryPage() {
                         )
                       }
                     } else {
-                      // In the middle: 1 ... 5 6 7 ... 10
+                      // In the middle: Mobile shows 1 ... 5 ... 10, Desktop shows 1 ... 4 5 6 ... 10
                       pages.push(
                         <Button
                           key={1}
@@ -761,27 +761,42 @@ export default function GalleryPage() {
                         </span>
                       )
                       
-                      // Show current page and neighbors (3 pages total)
-                      const startPage = currentPage - 1
-                      const endPage = currentPage + 1
+                      // Mobile: Show only current page, Desktop: Show current page and neighbors
+                      pages.push(
+                        <Button
+                          key={currentPage - 1}
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCurrentPage(currentPage - 1)}
+                          className="min-w-10 border-2 border-[#EEEEEE] hover:border-[#EEEEEE]/80 rounded-xl h-10 hidden sm:block"
+                        >
+                          {currentPage - 1}
+                        </Button>
+                      )
                       
-                      for (let i = startPage; i <= endPage; i++) {
-                        pages.push(
-                          <Button
-                            key={i}
-                            variant={currentPage === i ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => setCurrentPage(i)}
-                            className={`min-w-10 ${
-                              currentPage === i 
-                                ? "bg-[#163F69] hover:bg-[#163F69]/90 text-white border-2 border-[#5A7793] rounded-xl h-10" 
-                                : "border-2 border-[#EEEEEE] hover:border-[#EEEEEE]/80 rounded-xl h-10"
-                            }`}
-                          >
-                            {i}
-                          </Button>
-                        )
-                      }
+                      pages.push(
+                        <Button
+                          key={currentPage}
+                          variant="default"
+                          size="sm"
+                          onClick={() => setCurrentPage(currentPage)}
+                          className="min-w-10 bg-[#163F69] hover:bg-[#163F69]/90 text-white border-2 border-[#5A7793] rounded-xl h-10"
+                        >
+                          {currentPage}
+                        </Button>
+                      )
+                      
+                      pages.push(
+                        <Button
+                          key={currentPage + 1}
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setCurrentPage(currentPage + 1)}
+                          className="min-w-10 border-2 border-[#EEEEEE] hover:border-[#EEEEEE]/80 rounded-xl h-10 hidden sm:block"
+                        >
+                          {currentPage + 1}
+                        </Button>
+                      )
                       
                       pages.push(
                         <span key="ellipsis-end" className="px-2 text-gray-500">
