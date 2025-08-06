@@ -25,7 +25,7 @@ export default function HomePage() {
               <a href="#how-it-works" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
                 How it works
               </a>
-              <a href="#contact" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
+              <a href="/contact" className="text-[#163F69] font-semibold text-sm hover:opacity-80">
                 Contact us
               </a>
             </nav>

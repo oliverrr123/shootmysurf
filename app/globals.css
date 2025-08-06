@@ -87,4 +87,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Scroll offset for fixed header */
+  section[id] {
+    scroll-margin-top: 60px;
+  }
 }
