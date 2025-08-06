@@ -151,8 +151,8 @@ export default function HomePage() {
         </div>
 
         <div className="text-center mt-6">
-          <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-5 py-2.5 rounded-full font-semibold">
-            View All Albums
+          <Button asChild className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-5 py-2.5 rounded-full font-semibold">
+            <a href="/gallery">View All Albums</a>
           </Button>
         </div>
       </section>
