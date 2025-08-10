@@ -166,7 +166,18 @@ export default function CollectionPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <User className="w-4 h-4" />
-                  <span>{currentAlbum.photographer}</span>
+                  <button
+                    className="underline-offset-2 hover:underline"
+                    onClick={() => {
+                      const slug = currentAlbum.photographer
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, '-')
+                        .replace(/(^-|-$)+/g, '')
+                      router.push(`/photographers/${slug}`)
+                    }}
+                  >
+                    {currentAlbum.photographer}
+                  </button>
                 </div>
               </div>
 

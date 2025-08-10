@@ -560,7 +560,16 @@ export default function GalleryPage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <User className="w-5 h-5 text-[#163F69] flex-shrink-0" />
-                    <span className="text-sm text-[#163F69]">{album.photographer}</span>
+                    <button
+                      className="text-sm text-[#163F69] underline-offset-2 hover:underline"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        const slug = album.photographer.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+                        router.push(`/photographers/${slug}`)
+                      }}
+                    >
+                      {album.photographer}
+                    </button>
                   </div>
                 </div>
               </div>
