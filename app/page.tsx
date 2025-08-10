@@ -1,5 +1,6 @@
 import { MapPin, Calendar, User, Users, DollarSign, Shield, Waves } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -74,7 +75,12 @@ export default function HomePage() {
         <div className="w-full px-4 md:px-8">
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE]">
+              <Link
+                key={item}
+                href={`/gallery/${item}`}
+                className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE] block hover:shadow-lg transition-shadow"
+                aria-label={`Open album ${item}`}
+              >
                 <div className="h-52 p-2.5 rounded-xl mb-3 relative overflow-hidden">
                   <img
                     src="/images/card.jpg"
@@ -105,7 +111,7 @@ export default function HomePage() {
                     <span className="text-sm text-[#163F69]">John Doe</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

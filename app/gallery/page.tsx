@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useRouter } from "next/navigation"
 import { MapPin, Calendar, User, Waves, ChevronLeft, ChevronRight, X, CalendarDays, Clock, ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -46,6 +47,7 @@ const generateMockAlbums = (count: number) => {
 }
 
 export default function GalleryPage() {
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState("date-desc")
   const [photographerSearch, setPhotographerSearch] = useState("")
@@ -526,12 +528,16 @@ export default function GalleryPage() {
           {/* Albums Grid */}
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-8">
             {currentAlbums.map((album) => (
-              <div key={album.id} className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE] hover:shadow-lg transition-shadow duration-200">
+              <div 
+                key={album.id} 
+                className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE] hover:shadow-lg transition-all duration-200 cursor-pointer group hover:border-[#163F69]/20"
+                onClick={() => router.push(`/gallery/${album.id}`)}
+              >
                 <div className="h-52 p-2.5 rounded-xl mb-3 relative overflow-hidden">
                   <img
                     src={album.image}
                     alt={`${album.title} surf session`}
-                    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                    className="absolute inset-0 w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-200"
                     loading="lazy"
                   />
                   <div className="relative z-0 inline-flex items-center gap-3 px-1.5 py-0.5 bg-[#FAF9F6]/40 rounded-lg border-2 border-gray-300/60 backdrop-blur-sm">
@@ -542,7 +548,7 @@ export default function GalleryPage() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-1">
                     <Waves className="w-5 h-5 text-[#163F69] flex-shrink-0" />
-                    <span className="text-xl font-bold text-[#163F69]">{album.title}</span>
+                    <span className="text-xl font-bold text-[#163F69] group-hover:text-[#163F69]/80 transition-colors">{album.title}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <MapPin className="w-5 h-5 text-[#163F69] flex-shrink-0" />
