@@ -40,7 +40,7 @@ export default function HomePage() {
                     <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
                       I am surfer
                     </Button>
-                    <p className="text-xs text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
+                    <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
                     <Button
@@ -49,7 +49,7 @@ export default function HomePage() {
                     >
                       I am photographer
                     </Button>
-                    <p className="text-xs text-white md:text-black text-center sm:text-left md:max-w-36">Upload your photos, set price, sell it</p>
+                    <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-36">Upload your photos, set price, sell it</p>
                   </div>
                 </div>
               </div>

@@ -96,28 +96,6 @@ export default function ContactPage() {
                       <p className="text-sm text-[#6B7582]">We'll respond within 24 hours</p>
                     </div>
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#D0E6E7] rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-[#163F69]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-[#163F69] mb-1">Call Us</h3>
-                      <p className="text-[#163F69]">+1 (555) 123-SURF</p>
-                      <p className="text-sm text-[#6B7582]">Mon-Fri 9am-6pm PST</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#D0E6E7] rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-[#163F69]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-[#163F69] mb-1">Visit Us</h3>
-                      <p className="text-[#163F69]">123 Ocean Drive</p>
-                      <p className="text-[#163F69]">Surf City, CA 90210</p>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Quick Help */}
