@@ -7,7 +7,7 @@ export default function HomePage() {
     <>
 
       {/* Hero Section */}
-      <section className="py-4 pt-20">
+      <section className="py-4 pt-28">
         <div className="w-full px-4 md:px-8">
           <div className="min-h-96 md:h-96 lg:h-[30rem] rounded-xl overflow-hidden relative py-24 md:py-0">
             {/* Background Image */}
@@ -37,16 +37,13 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-4 justify-center md:justify-start items-center px-4 md:px-0">
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
+                    <Button variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
                       I am surfer
                     </Button>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Button
-                      variant="secondary"
-                      className="bg-white md:bg-[#EEEEEE] hover:bg-white/90 md:hover:bg-[#EEEEEE]/90 text-[#163F69] px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto"
-                    >
+                    <Button variant="wave" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
                       I am photographer
                     </Button>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-36">Upload your photos, set price, sell it</p>
@@ -73,12 +70,12 @@ export default function HomePage() {
         </div>
 
         <div className="w-full px-4 md:px-8">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[1, 2, 3, 4].map((item) => (
               <Link
                 key={item}
                 href={`/gallery/${item}`}
-                className="bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE] block hover:shadow-lg transition-shadow"
+                className={`bg-white p-3.5 rounded-3xl border-2 border-[#EEEEEE] block hover:shadow-lg transition-shadow ${item === 4 ? 'hidden sm:block lg:hidden' : ''}`}
                 aria-label={`Open album ${item}`}
               >
                 <div className="h-52 p-2.5 rounded-xl mb-3 relative overflow-hidden">
