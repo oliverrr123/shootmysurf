@@ -118,7 +118,7 @@
   @media (hover: hover) and (pointer: fine) {
   .wave-outline:hover::before {
     /* darker translucent brand tone so it shows over light panels */
-    background-color: rgba(22, 63, 105, 0.18);
+    background-color: rgba(8.63, 24.3, 41.2, 0.18);
     animation: loadingWave 2.5s linear;
   }
 
@@ -127,7 +127,7 @@
     background-color: transparent;
   }
   .wave-primary:hover::before {
-    background-color: #03a9f4;
+    background-color: rgba(255, 255, 255, 0.25);
     animation: loadingWave 2.5s linear;
   }
   }
