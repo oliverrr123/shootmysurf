@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "wave-primary bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        wave: "wave-outline border border-[#cacaca] bg-white text-[#163F69] hover:text-[#163F69]",
+        wave: "wave-secondary bg-[#EEE] text-[#163F69] hover:text-[#163F69]",
         wavePrimary: "wave-primary bg-[#163F69] text-white hover:text-white border border-transparent",
       },
       size: {

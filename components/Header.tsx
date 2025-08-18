@@ -44,7 +44,7 @@ export default function Header() {
               Create account
             </Button>
             <Button
-              variant="outline"
+              variant="wave"
               className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
             >
               Login
