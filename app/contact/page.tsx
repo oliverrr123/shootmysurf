@@ -61,7 +61,7 @@ export default function ContactPage() {
                 Get in Touch
               </h1>
               <p className="text-lg text-[#163F69] max-w-2xl mx-auto">
-                Have questions about ShootMySurf? Want to get started as a photographer or surfer? We're here to help!
+                Have questions about ShootMySurf?<br />Want to get started as a photographer or surfer? We're here to help!
               </p>
             </div>
           </div>
@@ -109,15 +109,12 @@ export default function ContactPage() {
                       <span className="font-semibold">Surfers:</span> Looking for photos from your last session?
                     </p>
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
-                    <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Photographer Guide
-                    </Button>
+                  <div className="mt-4">
                     <Button 
-                      variant="secondary"
-                      className="bg-white hover:bg-white/90 text-[#163F69] px-4 py-2 rounded-full text-sm font-semibold"
+                      className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-6 py-2 rounded-full text-sm font-semibold"
+                      onClick={() => window.location.href = '/#how-it-works'}
                     >
-                      Surfer Guide
+                      How it works
                     </Button>
                   </div>
                 </div>

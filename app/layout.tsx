@@ -37,9 +37,9 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden">
+        <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden flex flex-col">
           <Header />
-          <main>
+          <main className="flex-1">
             {children}
           </main>
           <Footer />
