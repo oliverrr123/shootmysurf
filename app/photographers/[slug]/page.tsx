@@ -59,7 +59,7 @@ const generateMockAlbums = (count: number) => {
       date: new Date(2025, monthSeed, daySeed),
       time: `${String(hourStart).padStart(2, "0")}:${String(minuteStart).padStart(2, "0")} - ${String(hourEnd).padStart(2, "0")}:${String(minuteEnd).padStart(2, "0")}`,
       photoCount: deterministicRandom(i * 19, 50) + 5,
-      image: "/images/card.jpg",
+      image: `/images/surf/${surfImages[i % surfImages.length]}`,
     }
   })
 }
@@ -103,7 +103,7 @@ export default function PhotographerPage() {
           <div className="flex items-center gap-4">
             <span className="inline-block rounded-full border-2 border-[#EEEEEE] p-0.5 bg-white">
               <img
-                src="/images/card.jpg"
+                src="/images/surf/jeremy-bishop-cmt3JdS5MC4-unsplash.jpg"
                 alt={`${photographerName} avatar`}
                 className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover"
               />

@@ -80,7 +80,7 @@ export default function HomePage() {
               >
                 <div className="h-52 p-2.5 rounded-xl mb-3 relative overflow-hidden">
                   <img
-                    src="/images/card.jpg"
+                    src="/images/surf/jeremy-bishop-cmt3JdS5MC4-unsplash.jpg"
                     alt={`Surf session ${item} - action shot of surfer on wave`}
                     className="absolute inset-0 w-full h-full object-cover rounded-lg"
                     loading="lazy"

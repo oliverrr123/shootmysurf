@@ -33,7 +33,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 6, 25),
       time: "10:00 - 12:00",
       sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/jeremy-bishop-_CFv3bntQlQ-unsplash.jpg",
       priceCents: 600,
     },
     {
@@ -43,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 6, 25),
       time: "10:00 - 12:00",
       sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/jeremy-bishop-pikyGuAmwpM-unsplash.jpg",
       priceCents: 600,
     },
     {
@@ -53,7 +53,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 6, 25),
       time: "10:00 - 12:00",
       sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/jeremy-bishop-zam3m6W2npM-unsplash.jpg",
       priceCents: 800,
     },
     {
@@ -63,7 +63,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 7, 15),
       time: "18:00 - 20:00",
       sellerName: "Sarah Wilson",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/tim-marshall-vn59e-3J2oo-unsplash.jpg",
       priceCents: 750,
     },
     {
@@ -73,7 +73,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 7, 15),
       time: "18:00 - 20:00",
       sellerName: "Sarah Wilson",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/thomas-ashlock-7G5dkthFyxA-unsplash.jpg",
       priceCents: 750,
     },
     {
@@ -83,7 +83,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 8, 3),
       time: "14:00 - 16:00",
       sellerName: "Mike Johnson",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/linus-nylund-SfdwxMA5VIM-unsplash.jpg",
       priceCents: 900,
     },
     {
@@ -93,7 +93,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 6, 30),
       time: "06:00 - 08:00",
       sellerName: "Emma Davis",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/joseph-greve-TII6axq3eo4-unsplash.jpg",
       priceCents: 650,
     },
     {
@@ -103,7 +103,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 6, 30),
       time: "06:00 - 08:00",
       sellerName: "Emma Davis",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/tim-marshall-hIHh4E4_OGA-unsplash.jpg",
       priceCents: 650,
     },
     {
@@ -113,7 +113,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 7, 22),
       time: "12:00 - 14:00",
       sellerName: "Carlos Rodriguez",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/sincerely-media-oC32cy4x-ZA-unsplash.jpg",
       priceCents: 850,
     },
     {
@@ -123,7 +123,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       date: new Date(2025, 8, 10),
       time: "09:00 - 11:00",
       sellerName: "Lisa Chen",
-      imageUrl: "/images/card.jpg",
+      imageUrl: "/images/surf/jeremy-bishop-b_wcdJKZw0A-unsplash.jpg",
       priceCents: 700,
     },
   ])

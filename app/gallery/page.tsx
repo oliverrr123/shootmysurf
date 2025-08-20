@@ -14,6 +14,23 @@ import { DateRange } from "react-day-picker"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
+// Available surf images
+const surfImages = [
+  "jeremy-bishop-_CFv3bntQlQ-unsplash.jpg",
+  "jeremy-bishop-pikyGuAmwpM-unsplash.jpg",
+  "jeremy-bishop-zam3m6W2npM-unsplash.jpg",
+  "tim-marshall-vn59e-3J2oo-unsplash.jpg",
+  "thomas-ashlock-7G5dkthFyxA-unsplash.jpg",
+  "linus-nylund-SfdwxMA5VIM-unsplash.jpg",
+  "joseph-greve-TII6axq3eo4-unsplash.jpg",
+  "tim-marshall-hIHh4E4_OGA-unsplash.jpg",
+  "sincerely-media-oC32cy4x-ZA-unsplash.jpg",
+  "jeremy-bishop-b_wcdJKZw0A-unsplash.jpg",
+  "jeremy-bishop-cmt3JdS5MC4-unsplash.jpg",
+  "delfi-de-la-rua-Sj5efgWguDs-unsplash.jpg",
+  "vladimir-kudinov-RKiMg1bwsMY-unsplash.jpg"
+]
+
 // Mock data for albums - in a real app, this would come from an API
 const generateMockAlbums = (count: number) => {
   const locations = ["Malibu Beach", "Bondi Beach", "Pipeline", "Mavericks", "Gold Coast", "Jeffreys Bay", "Ericeira", "Nazaré"]
@@ -41,7 +58,7 @@ const generateMockAlbums = (count: number) => {
       date: new Date(2025, monthSeed, daySeed),
       time: `${String(hourStart).padStart(2, '0')}:${String(minuteStart).padStart(2, '0')} - ${String(hourEnd).padStart(2, '0')}:${String(minuteEnd).padStart(2, '0')}`,
       photoCount: deterministicRandom(i * 19, 50) + 5,
-      image: "/images/card.jpg"
+      image: `/images/surf/${surfImages[i % surfImages.length]}`
     }
   })
 }

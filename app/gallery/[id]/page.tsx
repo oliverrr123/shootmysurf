@@ -5,6 +5,23 @@ import { useParams, useRouter } from "next/navigation"
 import { MapPin, Calendar, User, Waves, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+// Available surf images
+const surfImages = [
+  "jeremy-bishop-_CFv3bntQlQ-unsplash.jpg",
+  "jeremy-bishop-pikyGuAmwpM-unsplash.jpg",
+  "jeremy-bishop-zam3m6W2npM-unsplash.jpg",
+  "tim-marshall-vn59e-3J2oo-unsplash.jpg",
+  "thomas-ashlock-7G5dkthFyxA-unsplash.jpg",
+  "linus-nylund-SfdwxMA5VIM-unsplash.jpg",
+  "joseph-greve-TII6axq3eo4-unsplash.jpg",
+  "tim-marshall-hIHh4E4_OGA-unsplash.jpg",
+  "sincerely-media-oC32cy4x-ZA-unsplash.jpg",
+  "jeremy-bishop-b_wcdJKZw0A-unsplash.jpg",
+  "jeremy-bishop-cmt3JdS5MC4-unsplash.jpg",
+  "delfi-de-la-rua-Sj5efgWguDs-unsplash.jpg",
+  "vladimir-kudinov-RKiMg1bwsMY-unsplash.jpg"
+]
+
 // Mock data generator - same as in gallery page
 const generateMockAlbums = (count: number) => {
   const locations = ["Malibu Beach", "Bondi Beach", "Pipeline", "Mavericks", "Gold Coast", "Jeffreys Bay", "Ericeira", "Nazaré"]
@@ -32,7 +49,7 @@ const generateMockAlbums = (count: number) => {
       date: new Date(2025, monthSeed, daySeed),
       time: `${String(hourStart).padStart(2, '0')}:${String(minuteStart).padStart(2, '0')} - ${String(hourEnd).padStart(2, '0')}:${String(minuteEnd).padStart(2, '0')}`,
       photoCount: deterministicRandom(i * 19, 50) + 5,
-      image: "/images/card.jpg"
+      image: `/images/surf/${surfImages[i % surfImages.length]}`
     }
   })
 }
@@ -50,7 +67,7 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
     
     return {
       id: photoSeed,
-      url: "/images/card.jpg", // In a real app, these would be different photos
+      url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
       alt: `Surf photo ${i + 1} from album ${albumId}`,
       likes: likesCount,
       views: viewsCount,
@@ -79,7 +96,7 @@ export default function CollectionPage() {
   
   const heroImageUrl = useMemo(() => {
     if (photos.length > 0) return photos[0].url
-    return currentAlbum?.image ?? "/images/card.jpg"
+    return currentAlbum?.image ?? "/images/surf/jeremy-bishop-cmt3JdS5MC4-unsplash.jpg"
   }, [photos, currentAlbum])
   
   const formatDate = (date: Date) => {
