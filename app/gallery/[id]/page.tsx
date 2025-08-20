@@ -60,20 +60,84 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
     return ((seed * 9301 + 49297) % 233280) % max
   }
   
-  return Array.from({ length: photoCount }, (_, i) => {
-    const photoSeed = albumId * 1000 + i
+  // Create photo stacks - some photos will be grouped together
+  const photos = []
+  let currentId = albumId * 1000
+  let stackCounter = 0
+  
+  // Create stacks every 3rd photo for testing
+  for (let i = 0; i < photoCount; i++) {
+    const photoSeed = currentId + i
     const likesCount = deterministicRandom(photoSeed * 2, 500) + 10
     const viewsCount = deterministicRandom(photoSeed * 3, 2000) + 100
     
-    return {
-      id: photoSeed,
-      url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
-      alt: `Surf photo ${i + 1} from album ${albumId}`,
-      likes: likesCount,
-      views: viewsCount,
-      caption: `Epic wave action captured at the perfect moment #${i + 1}`
+    // Create a stack every 3rd photo
+    const shouldCreateStack = (i % 3 === 0)
+    
+    if (shouldCreateStack) {
+      // Create a stack - only show 1 photo in grid but store all 3 for carousel
+      console.log(`Creating stack ${stackCounter} with 3 photos starting at index ${i}`)
+      
+      // Only add the first photo to the grid display
+      photos.push({
+        id: currentId + i,
+        url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
+        alt: `Surf photo ${i + 1} from album ${albumId}`,
+        likes: likesCount,
+        views: viewsCount,
+        caption: `Epic wave action captured at the perfect moment #${i + 1}`,
+        stackId: stackCounter,
+        stackSize: 3,
+        stackIndex: 0,
+        // Store the additional stack photos for carousel
+        stackPhotos: [
+          {
+            id: currentId + i,
+            url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
+            alt: `Surf photo ${i + 1} from album ${albumId}`,
+            likes: likesCount,
+            views: viewsCount,
+            caption: `Epic wave action captured at the perfect moment #${i + 1}`,
+          },
+          {
+            id: currentId + i + 1,
+            url: `/images/surf/${surfImages[(photoSeed + 1) % surfImages.length]}`,
+            alt: `Surf photo ${i + 2} from album ${albumId}`,
+            likes: deterministicRandom((photoSeed + 1) * 2, 500) + 10,
+            views: deterministicRandom((photoSeed + 1) * 3, 2000) + 100,
+            caption: `Epic wave action captured at the perfect moment #${i + 2}`,
+          },
+          {
+            id: currentId + i + 2,
+            url: `/images/surf/${surfImages[(photoSeed + 2) % surfImages.length]}`,
+            alt: `Surf photo ${i + 3} from album ${albumId}`,
+            likes: deterministicRandom((photoSeed + 2) * 2, 500) + 10,
+            views: deterministicRandom((photoSeed + 2) * 3, 2000) + 100,
+            caption: `Epic wave action captured at the perfect moment #${i + 3}`,
+          }
+        ]
+      })
+      stackCounter++
+      currentId += 3
+    } else {
+      // Single photo
+      photos.push({
+        id: currentId + i,
+        url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
+        alt: `Surf photo ${i + 1} from album ${albumId}`,
+        likes: likesCount,
+        views: viewsCount,
+        caption: `Epic wave action captured at the perfect moment #${i + 1}`,
+        stackId: null,
+        stackSize: 1,
+        stackIndex: 0,
+        stackPhotos: null
+      })
+      currentId += 1
     }
-  })
+  }
+  
+  return photos
 }
 
 export default function CollectionPage() {
@@ -83,6 +147,7 @@ export default function CollectionPage() {
   const photosSectionRef = useRef<HTMLDivElement>(null)
   
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null)
+  const [currentStackIndex, setCurrentStackIndex] = useState<number>(0)
   
   // Get all albums to find the current one
   const allAlbums = generateMockAlbums(120)
@@ -91,7 +156,10 @@ export default function CollectionPage() {
   // Generate photos for this album
   const photos = useMemo(() => {
     if (!currentAlbum) return []
-    return generateMockPhotos(albumId, currentAlbum.photoCount)
+    const generatedPhotos = generateMockPhotos(albumId, currentAlbum.photoCount)
+    console.log('Generated photos:', generatedPhotos)
+    console.log('Photos with stacks:', generatedPhotos.filter(p => p.stackSize > 1))
+    return generatedPhotos
   }, [albumId, currentAlbum])
   
   const heroImageUrl = useMemo(() => {
@@ -213,7 +281,7 @@ export default function CollectionPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-[#163F69] font-neulis mb-4">Album photos</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
               {photos.map((photo) => (
-                <div key={photo.id} className="bg-white rounded-2xl overflow-hidden">
+                <div key={photo.id} className="bg-white rounded-2xl border-2 border-[#EEEEEE] overflow-hidden">
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={photo.url}
@@ -222,6 +290,13 @@ export default function CollectionPage() {
                       loading="lazy"
                       onClick={() => setSelectedPhoto(photo.id)}
                     />
+                    
+                    {/* Stack indicator */}
+                    {photo.stackSize > 1 && photo.stackIndex === 0 && (
+                      <div className="absolute top-2 right-2 bg-[#163F69] text-white text-xs font-semibold px-2 py-1 rounded-full">
+                        {photo.stackSize} photos
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -239,8 +314,20 @@ export default function CollectionPage() {
               <div className="lg:w-2/3 h-64 lg:h-full">
                 <div className="relative h-full">
                   <img
-                    src={photos.find(p => p.id === selectedPhoto)?.url}
-                    alt={photos.find(p => p.id === selectedPhoto)?.alt}
+                    src={(() => {
+                      const currentPhoto = photos.find(p => p.id === selectedPhoto)
+                      if (currentPhoto?.stackSize > 1 && currentPhoto.stackPhotos) {
+                        return currentPhoto.stackPhotos[currentStackIndex]?.url || currentPhoto.url
+                      }
+                      return currentPhoto?.url
+                    })()}
+                    alt={(() => {
+                      const currentPhoto = photos.find(p => p.id === selectedPhoto)
+                      if (currentPhoto?.stackSize > 1 && currentPhoto.stackPhotos) {
+                        return currentPhoto.stackPhotos[currentStackIndex]?.alt || currentPhoto.alt
+                      }
+                      return currentPhoto?.alt
+                    })()}
                     className="w-full h-full object-cover"
                   />
                   {/* Navigation arrows */}
@@ -270,6 +357,44 @@ export default function CollectionPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
+
+                  {/* Photo stack miniatures */}
+                  {(() => {
+                    const currentPhoto = photos.find(p => p.id === selectedPhoto)
+                    console.log('Current photo in carousel:', currentPhoto)
+                    
+                    // Only show miniatures if this photo is part of a stack
+                    if (currentPhoto && currentPhoto.stackSize > 1 && currentPhoto.stackPhotos) {
+                      console.log('Stack photos found:', currentPhoto.stackPhotos)
+                      return (
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                          {currentPhoto.stackPhotos.map((stackPhoto, index) => (
+                            <div
+                              key={stackPhoto.id}
+                              className={`w-16 h-12 rounded-lg overflow-hidden cursor-pointer border-2 transition-all ${
+                                index === currentPhoto.stackIndex
+                                  ? 'border-white shadow-lg scale-110' 
+                                  : 'border-white/50 hover:border-white/80'
+                              }`}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                // Update the current stack index to show the clicked miniature
+                                setCurrentStackIndex(index)
+                              }}
+                            >
+                              <img
+                                src={stackPhoto.url}
+                                alt={stackPhoto.alt}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    }
+                    console.log('No stack found for current photo')
+                    return null
+                  })()}
                 </div>
               </div>
 
