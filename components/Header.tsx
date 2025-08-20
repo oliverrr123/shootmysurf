@@ -1,11 +1,12 @@
 "use client"
 
-import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ShoppingCart } from "lucide-react"
+import { useCart } from "@/hooks/use-cart"
 
 export default function Header() {
-  const pathname = usePathname()
+  const { cartCount } = useCart()
 
   return (
     <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm fixed top-0 left-0 right-0 z-50" style={{ 
@@ -40,12 +41,21 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            {/* Cart */}
+            <Link href="/cart" className="relative p-2 text-[#163F69] hover:bg-[#163F69]/10 rounded-full transition-colors">
+              <ShoppingCart className="w-5 h-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
+            </Link>
+
             <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold">
               Create account
             </Button>
             <Button
-              variant="wave"
-              className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
+              className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold wave-secondary bg-[#EEE] text-[#163F69] hover:text-[#163F69]"
             >
               Login
             </Button>

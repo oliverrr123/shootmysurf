@@ -1,9 +1,10 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, Trash2 } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useCart } from "@/hooks/use-cart"
 
 type CartItem = {
   id: number
@@ -30,40 +31,7 @@ function formatDate(date: Date): string {
 
 export default function CartPage() {
   const router = useRouter()
-
-  // Mock cart items
-  const [items, setItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      albumId: 101,
-      albumTitle: "Beach",
-      date: new Date(2025, 6, 25),
-      time: "10:00 - 12:00",
-      sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
-      priceCents: 600,
-    },
-    {
-      id: 2,
-      albumId: 101,
-      albumTitle: "Beach",
-      date: new Date(2025, 6, 25),
-      time: "10:00 - 12:00",
-      sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
-      priceCents: 600,
-    },
-    {
-      id: 3,
-      albumId: 202,
-      albumTitle: "Beach",
-      date: new Date(2025, 6, 25),
-      time: "10:00 - 12:00",
-      sellerName: "John Doe",
-      imageUrl: "/images/card.jpg",
-      priceCents: 800,
-    },
-  ])
+  const { items, removeItem } = useCart()
 
   const itemsByAlbum = useMemo(() => {
     const groups: Record<number, CartItem[]> = {}
@@ -82,14 +50,10 @@ export default function CartPage() {
     }
   }, [items])
 
-  function removeItem(itemId: number): void {
-    setItems((prev) => prev.filter((i) => i.id !== itemId))
-  }
-
   return (
     <div className="pt-20 pb-20">
       <div className="w-full px-4 md:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {/* Left: Cart list */}
           <div className="lg:col-span-2 space-y-6">
             <h1 className="text-2xl md:text-4xl font-bold text-[#163F69] font-neulis">Your cart</h1>
@@ -172,8 +136,8 @@ export default function CartPage() {
 
           {/* Right: Summary */}
           {items.length > 0 && (
-            <aside className="lg:col-span-1">
-              <div className="bg-white rounded-3xl border-2 border-[#EEEEEE] p-5 sticky top-28">
+            <aside className="lg:col-span-1 relative">
+              <div className="bg-white rounded-3xl border-2 border-[#EEEEEE] p-5 fixed top-28 w-[calc(100vw-2rem-66.666667%)] right-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#163F69] font-neulis mb-4">Order summary</h2>
 
                 <div className="space-y-3 text-[#163F69] mb-4">

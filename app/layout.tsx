@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { CartProvider } from '@/hooks/use-cart'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -37,13 +38,15 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden flex flex-col">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="min-h-screen bg-[#FAF9F6] overflow-x-hidden flex flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   )
