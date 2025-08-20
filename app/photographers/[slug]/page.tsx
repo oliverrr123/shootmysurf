@@ -6,6 +6,23 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Waves, MapPin, Calendar, User, Share2, Instagram, Facebook } from "lucide-react"
 
+// Available surf images
+const surfImages = [
+  "jeremy-bishop-_CFv3bntQlQ-unsplash.jpg",
+  "jeremy-bishop-pikyGuAmwpM-unsplash.jpg",
+  "jeremy-bishop-zam3m6W2npM-unsplash.jpg",
+  "tim-marshall-vn59e-3J2oo-unsplash.jpg",
+  "thomas-ashlock-7G5dkthFyxA-unsplash.jpg",
+  "linus-nylund-SfdwxMA5VIM-unsplash.jpg",
+  "joseph-greve-TII6axq3eo4-unsplash.jpg",
+  "tim-marshall-hIHh4E4_OGA-unsplash.jpg",
+  "sincerely-media-oC32cy4x-ZA-unsplash.jpg",
+  "jeremy-bishop-b_wcdJKZw0A-unsplash.jpg",
+  "jeremy-bishop-cmt3JdS5MC4-unsplash.jpg",
+  "delfi-de-la-rua-Sj5efgWguDs-unsplash.jpg",
+  "vladimir-kudinov-RKiMg1bwsMY-unsplash.jpg"
+]
+
 // Mock data for albums (same structure as gallery)
 const generateMockAlbums = (count: number) => {
   const locations = [

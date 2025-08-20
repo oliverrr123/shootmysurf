@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { MapPin, Calendar, User, Waves, Share2 } from "lucide-react"
+import { MapPin, Calendar, User, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 // Available surf images
@@ -133,7 +133,7 @@ export default function CollectionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             {/* Hero image */}
             <div className="w-full">
-              <div className="relative rounded-2xl overflow-hidden border-2 border-[#EEEEEE]">
+              <div className="relative rounded-2xl overflow-hidden">
                 <div className="aspect-video">
                   <img
                     src={heroImageUrl}
@@ -149,14 +149,13 @@ export default function CollectionPage() {
             <div className="flex flex-col gap-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <Waves className="w-6 h-6 text-[#163F69]" />
                   <h1 className="text-3xl md:text-4xl font-bold text-[#163F69] leading-7 font-neulis">
                     {currentAlbum.title}
                   </h1>
                 </div>
                 <Button
                   variant="outline"
-                  className="h-10 w-10 p-0 rounded-xl border-2 border-[#EEEEEE]"
+                  className="h-10 w-10 p-0 rounded-xl"
                   onClick={async () => {
                     try {
                       await navigator.clipboard.writeText(window.location.href)
@@ -214,7 +213,7 @@ export default function CollectionPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-[#163F69] font-neulis mb-4">Album photos</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
               {photos.map((photo) => (
-                <div key={photo.id} className="bg-white rounded-2xl border-2 border-[#EEEEEE] overflow-hidden">
+                <div key={photo.id} className="bg-white rounded-2xl overflow-hidden">
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={photo.url}
@@ -231,24 +230,138 @@ export default function CollectionPage() {
         </div>
       </div>
 
-      {/* Photo Modal */}
+      {/* Photo Carousel Modal */}
       {selectedPhoto && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setSelectedPhoto(null)}>
-          <div className="relative max-w-4xl max-h-full">
-            <img
-              src={photos.find(p => p.id === selectedPhoto)?.url}
-              alt={photos.find(p => p.id === selectedPhoto)?.alt}
-              className="max-w-full max-h-full object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button
-              onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          <div className="bg-white rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-col lg:flex-row h-full">
+              {/* Left: Photo */}
+              <div className="lg:w-2/3 h-64 lg:h-full">
+                <div className="relative h-full">
+                  <img
+                    src={photos.find(p => p.id === selectedPhoto)?.url}
+                    alt={photos.find(p => p.id === selectedPhoto)?.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Navigation arrows */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const currentIndex = photos.findIndex(p => p.id === selectedPhoto)
+                      const prevIndex = currentIndex > 0 ? currentIndex - 1 : photos.length - 1
+                      setSelectedPhoto(photos[prevIndex].id)
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#163F69] p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const currentIndex = photos.findIndex(p => p.id === selectedPhoto)
+                      const nextIndex = currentIndex < photos.length - 1 ? currentIndex + 1 : 0
+                      setSelectedPhoto(photos[nextIndex].id)
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#163F69] p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Right: Text Details */}
+              <div className="lg:w-1/3 p-6 lg:p-8 flex flex-col">
+                {/* Close button */}
+                <button
+                  onClick={() => setSelectedPhoto(null)}
+                  className="absolute top-4 right-4 lg:top-6 lg:right-6 text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Photo info */}
+                <div className="flex-1 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#163F69] font-neulis mb-2">
+                      {currentAlbum.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Photo {photos.findIndex(p => p.id === selectedPhoto) + 1} of {photos.length}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-5 h-5 text-[#163F69]" />
+                      <span className="text-[#163F69]">{currentAlbum.location}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Calendar className="w-5 h-5 text-[#163F69]" />
+                      <span className="text-[#163F69]">
+                        {formatDate(currentAlbum.date)} | {currentAlbum.time}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <User className="w-5 h-5 text-[#163F69]" />
+                      <button
+                        className="text-[#163F69] underline-offset-2 hover:underline font-semibold"
+                        onClick={() => {
+                          const slug = currentAlbum.photographer
+                            .toLowerCase()
+                            .replace(/[^a-z0-9]+/g, '-')
+                            .replace(/(^-|-$)+/g, '')
+                          router.push(`/photographers/${slug}`)
+                        }}
+                      >
+                        {currentAlbum.photographer}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1 text-gray-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span className="text-sm">{photos.find(p => p.id === selectedPhoto)?.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-gray-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <span className="text-sm">{photos.find(p => p.id === selectedPhoto)?.views}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Price */}
+                    <div className="pt-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#163F69] font-semibold">Price</span>
+                        <span className="text-2xl font-bold text-[#163F69]">5.00 €</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="pt-4 space-y-3">
+                    <Button className="w-full bg-[#163F69] hover:bg-[#163F69]/90 text-white rounded-full">
+                      Add to Cart
+                    </Button>
+                    <Button className="w-full bg-white border-2 border-[#163F69] text-[#163F69] hover:bg-[#163F69]/5 rounded-full">
+                      Download Preview
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
