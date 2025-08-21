@@ -68,8 +68,6 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
   // Create stacks every 3rd photo for testing
   for (let i = 0; i < photoCount; i++) {
     const photoSeed = currentId + i
-    const likesCount = deterministicRandom(photoSeed * 2, 500) + 10
-    const viewsCount = deterministicRandom(photoSeed * 3, 2000) + 100
     
     // Create a stack every 3rd photo
     const shouldCreateStack = (i % 3 === 0)
@@ -83,8 +81,6 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
         id: currentId + i,
         url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
         alt: `Surf photo ${i + 1} from album ${albumId}`,
-        likes: likesCount,
-        views: viewsCount,
         caption: `Epic wave action captured at the perfect moment #${i + 1}`,
         stackId: stackCounter,
         stackSize: 3,
@@ -95,24 +91,18 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
             id: currentId + i,
             url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
             alt: `Surf photo ${i + 1} from album ${albumId}`,
-            likes: likesCount,
-            views: viewsCount,
             caption: `Epic wave action captured at the perfect moment #${i + 1}`,
           },
           {
             id: currentId + i + 1,
             url: `/images/surf/${surfImages[(photoSeed + 1) % surfImages.length]}`,
             alt: `Surf photo ${i + 2} from album ${albumId}`,
-            likes: deterministicRandom((photoSeed + 1) * 2, 500) + 10,
-            views: deterministicRandom((photoSeed + 1) * 3, 2000) + 100,
             caption: `Epic wave action captured at the perfect moment #${i + 2}`,
           },
           {
             id: currentId + i + 2,
             url: `/images/surf/${surfImages[(photoSeed + 2) % surfImages.length]}`,
             alt: `Surf photo ${i + 3} from album ${albumId}`,
-            likes: deterministicRandom((photoSeed + 2) * 2, 500) + 10,
-            views: deterministicRandom((photoSeed + 2) * 3, 2000) + 100,
             caption: `Epic wave action captured at the perfect moment #${i + 3}`,
           }
         ]
@@ -125,8 +115,6 @@ const generateMockPhotos = (albumId: number, photoCount: number) => {
         id: currentId + i,
         url: `/images/surf/${surfImages[photoSeed % surfImages.length]}`,
         alt: `Surf photo ${i + 1} from album ${albumId}`,
-        likes: likesCount,
-        views: viewsCount,
         caption: `Epic wave action captured at the perfect moment #${i + 1}`,
         stackId: null,
         stackSize: 1,
@@ -364,7 +352,7 @@ export default function CollectionPage() {
                     console.log('Current photo in carousel:', currentPhoto)
                     
                     // Only show miniatures if this photo is part of a stack
-                    if (currentPhoto && currentPhoto.stackSize > 1 && currentPhoto.stackPhotos) {
+                    if (currentPhoto?.stackSize && currentPhoto.stackSize > 1 && currentPhoto.stackPhotos) {
                       console.log('Stack photos found:', currentPhoto.stackPhotos)
                       return (
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -372,7 +360,7 @@ export default function CollectionPage() {
                             <div
                               key={stackPhoto.id}
                               className={`w-16 h-12 rounded-lg overflow-hidden cursor-pointer border-2 transition-all ${
-                                index === currentPhoto.stackIndex
+                                index === (currentPhoto.stackIndex ?? 0)
                                   ? 'border-white shadow-lg scale-110' 
                                   : 'border-white/50 hover:border-white/80'
                               }`}
@@ -450,22 +438,6 @@ export default function CollectionPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1 text-gray-500">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        <span className="text-sm">{photos.find(p => p.id === selectedPhoto)?.likes}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-gray-500">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        <span className="text-sm">{photos.find(p => p.id === selectedPhoto)?.views}</span>
-                      </div>
-                    </div>
-                    
                     {/* Price */}
                     <div className="pt-2">
                       <div className="flex items-center justify-between">

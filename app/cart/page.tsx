@@ -136,9 +136,9 @@ export default function CartPage() {
 
           {/* Right: Summary */}
           {items.length > 0 && (
-            <aside className="lg:col-span-1 relative">
-              <div className="bg-white rounded-3xl border-2 border-[#EEEEEE] p-5 fixed top-28 w-[calc(100vw-2rem-66.666667%)] right-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#163F69] font-neulis mb-4">Order summary</h2>
+            <aside className="lg:col-span-1">
+              <div className="bg-white rounded-3xl border-2 border-[#EEEEEE] p-4 sm:p-5 lg:sticky lg:top-28">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#163F69] font-neulis mb-4">Order summary</h2>
 
                 <div className="space-y-3 text-[#163F69] mb-4">
                   <div className="flex items-center justify-between">
@@ -151,7 +151,7 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#163F69] hover:bg-[#163F69]/90 rounded-full h-11">Go to checkout</Button>
+                <Button className="w-full bg-[#163F69] hover:bg-[#163F69]/90 rounded-full h-10 sm:h-11">Go to checkout</Button>
               </div>
             </aside>
           )}
