@@ -55,7 +55,8 @@ export default function Header() {
               Create account
             </Button>
             <Button
-              className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold wave-secondary bg-[#EEE] text-[#163F69] hover:text-[#163F69]"
+              variant="wave"
+              className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
             >
               Login
             </Button>

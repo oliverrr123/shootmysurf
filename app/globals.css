@@ -144,6 +144,11 @@
   /* Ensure text stays above wave layer */
   .btn-content { position: relative; z-index: 2; }
 
+  /* Disable wave effect for specific buttons */
+  .no-wave::before {
+    display: none !important;
+  }
+
   @keyframes loadingWave {
     0% {
       clip-path: polygon(0% 100%, 100% 100%, 99% 100%, 81% 100%, 64% 100%, 46% 100%, 29% 100%, 14% 100%, 0 100%);

@@ -339,7 +339,7 @@ export default function GalleryPage() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12",
+                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12 no-wave",
                             !dateRange && "text-muted-foreground"
                           )}
                         >
@@ -384,7 +384,7 @@ export default function GalleryPage() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12",
+                            "w-full sm:w-64 justify-start text-left font-normal border-2 border-[#EEEEEE] rounded-xl text-sm h-12 no-wave",
                             (timeRange[0] === 0 && timeRange[1] === 24) && "text-muted-foreground"
                           )}
                         >
