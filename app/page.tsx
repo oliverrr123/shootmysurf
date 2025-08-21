@@ -179,7 +179,7 @@ export default function HomePage() {
                     Quisque tincidunt scelerisque libero. Aliquam erat volutpat. Quisque porta. Integer imperdiet lectus
                     quis justo. Vivamus ac leo pretium faucibus.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+                  <div className="flex flex-col items-center gap-4">
                     <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-5 py-2.5 rounded-full font-semibold">
                       Find my photos
                     </Button>
