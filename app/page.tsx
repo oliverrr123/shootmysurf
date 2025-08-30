@@ -54,10 +54,11 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-4 justify-center md:justify-start items-center px-4 md:px-0">
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Link href="/gallery">
-                      <Button asChild variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
-                        I am surfer
-                      </Button>
+                    <Link 
+                      href="/gallery"
+                      className="btn-wave wave-primary relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 overflow-hidden bg-[#163F69] text-white hover:text-white border-0 h-10 px-6 py-3 md:text-base w-full sm:w-auto"
+                    >
+                      <span className="btn-content inline-flex items-center gap-2">I am surfer</span>
                     </Link>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
