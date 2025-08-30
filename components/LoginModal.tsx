@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@/components/ui/dialog"
 
 interface LoginModalProps {
@@ -49,9 +50,9 @@ export function LoginModal({ open, onOpenChange, onSwitchToSignup }: LoginModalP
 
             {/* Header */}
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#163F69] mb-2">
+              <DialogTitle className="text-3xl font-bold text-[#163F69] mb-2">
                 Log in to your account
-              </h2>
+              </DialogTitle>
               <p className="text-lg text-[#6B7582]">
                 Welcome back — please enter your details.
               </p>

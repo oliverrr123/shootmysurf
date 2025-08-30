@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 
@@ -51,9 +52,9 @@ export function SignupModal({ open, onOpenChange, onSwitchToLogin }: SignupModal
 
             {/* Header */}
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#163F69] mb-2">
+              <DialogTitle className="text-3xl font-bold text-[#163F69] mb-2">
                 Create your account
-              </h2>
+              </DialogTitle>
               <p className="text-lg text-[#6B7582]">
                 Join us in less than a minute.
               </p>
