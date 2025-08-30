@@ -54,9 +54,11 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-4 justify-center md:justify-start items-center px-4 md:px-0">
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Button asChild variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
-                      <Link href="/gallery">I am surfer</Link>
-                    </Button>
+                    <Link href="/gallery">
+                      <Button asChild variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
+                        I am surfer
+                      </Button>
+                    </Link>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
