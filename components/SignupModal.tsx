@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -172,13 +173,21 @@ export function SignupModal({ open, onOpenChange, onSwitchToLogin }: SignupModal
             <div className="mt-6">
               <p className="text-xs text-gray-500 leading-relaxed">
                 By signing up, you agree to our{" "}
-                <button className="text-[#163F69] hover:underline underline">
+                <Link 
+                  href="/terms" 
+                  className="text-[#163F69] hover:underline underline"
+                  onClick={() => onOpenChange(false)}
+                >
                   Terms of Use
-                </button>{" "}
+                </Link>{" "}
                 and{" "}
-                <button className="text-[#163F69] hover:underline underline">
+                <Link 
+                  href="/privacy" 
+                  className="text-[#163F69] hover:underline underline"
+                  onClick={() => onOpenChange(false)}
+                >
                   Privacy Policy
-                </button>
+                </Link>
               </p>
             </div>
           </div>
