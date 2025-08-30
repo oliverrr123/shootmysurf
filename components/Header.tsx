@@ -4,9 +4,24 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ShoppingCart } from "lucide-react"
 import { useCart } from "@/hooks/use-cart"
+import { SignupModal } from "@/components/SignupModal"
+import { LoginModal } from "@/components/LoginModal"
+import { useState } from "react"
 
 export default function Header() {
   const { cartCount } = useCart()
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+
+  const handleSwitchToLogin = () => {
+    setIsSignupModalOpen(false)
+    setIsLoginModalOpen(true)
+  }
+
+  const handleSwitchToSignup = () => {
+    setIsLoginModalOpen(false)
+    setIsSignupModalOpen(true)
+  }
 
   return (
     <header className="w-full py-3 bg-[#FAF9F6]/60 border-b border-[#E5E8EB] backdrop-blur-sm fixed top-0 left-0 right-0 z-50" style={{ 
@@ -51,10 +66,14 @@ export default function Header() {
               )}
             </Link>
 
-            <Button className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold">
+            <Button 
+              onClick={() => setIsSignupModalOpen(true)}
+              className="bg-[#163F69] hover:bg-[#163F69]/90 text-white px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
+            >
               Create account
             </Button>
             <Button
+              onClick={() => setIsLoginModalOpen(true)}
               variant="wave"
               className="px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold"
             >
@@ -63,6 +82,20 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Signup Modal */}
+      <SignupModal 
+        open={isSignupModalOpen} 
+        onOpenChange={setIsSignupModalOpen}
+        onSwitchToLogin={handleSwitchToLogin}
+      />
+
+      {/* Login Modal */}
+      <LoginModal 
+        open={isLoginModalOpen} 
+        onOpenChange={setIsLoginModalOpen}
+        onSwitchToSignup={handleSwitchToSignup}
+      />
     </header>
   )
 }
