@@ -1,8 +1,25 @@
+"use client"
+
 import { MapPin, Calendar, User, Users, DollarSign, Shield, Waves } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { SignupModal } from "@/components/SignupModal"
+import { LoginModal } from "@/components/LoginModal"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+
+  const handleSwitchToLogin = () => {
+    setIsSignupModalOpen(false)
+    setIsLoginModalOpen(true)
+  }
+
+  const handleSwitchToSignup = () => {
+    setIsLoginModalOpen(false)
+    setIsSignupModalOpen(true)
+  }
   return (
     <>
 
@@ -37,13 +54,17 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-6 md:gap-4 justify-center md:justify-start items-center px-4 md:px-0">
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Button variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
-                      I am surfer
+                    <Button asChild variant="wavePrimary" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
+                      <Link href="/gallery">I am surfer</Link>
                     </Button>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-32">Find your wave and buy it.</p>
                   </div>
                   <div className="flex flex-col gap-2 items-center sm:items-start w-full sm:w-auto">
-                    <Button variant="wave" className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto">
+                    <Button 
+                      onClick={() => setIsSignupModalOpen(true)}
+                      variant="wave" 
+                      className="px-6 py-3 rounded-full font-semibold text-sm md:text-base w-full sm:w-auto"
+                    >
                       I am photographer
                     </Button>
                     <p className="text-sm font-semibold text-white md:text-black text-center sm:text-left md:max-w-36">Upload your photos, set price, sell it</p>
@@ -275,6 +296,20 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Signup Modal */}
+      <SignupModal 
+        open={isSignupModalOpen} 
+        onOpenChange={setIsSignupModalOpen}
+        onSwitchToLogin={handleSwitchToLogin}
+      />
+
+      {/* Login Modal */}
+      <LoginModal 
+        open={isLoginModalOpen} 
+        onOpenChange={setIsLoginModalOpen}
+        onSwitchToSignup={handleSwitchToSignup}
+      />
 
     </>
   )
